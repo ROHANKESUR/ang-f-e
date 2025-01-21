@@ -1,0 +1,92 @@
+<div class="container flex justify-center items-center w-screen h-screen">
+  <form
+    action=""
+    (ngSubmit)="onClick()"
+    #form="ngForm"
+    class="grid grid-cols-1 gap-2 border bg-[#111926] min-w-96 w-1/2 md:w-1/4 p-5 rounded-xl shadow-md border-[#2e323e] text-sm"
+  >
+    <div><h1 class="font-semibold text-2xl py-3 text-center">Register</h1></div>
+    <label for="username" class="py-1">Username</label>
+    <input
+      type="text"
+      id="username"
+      name="username"
+      #uname="ngModel"
+      [(ngModel)]="registerData.username"
+      placeholder="Enter your Username"
+      required
+      minlength="4"
+      class="border border-[#2e323e] rounded-md py-2 focus:border-indigo-400 outline-none px-2 bg-[#111926]"
+    />
+    <div class="text-red-500">
+      <span *ngIf="uname.errors?.['required'] && uname.touched"
+        >username is required</span
+      >
+      <span *ngIf="uname.errors?.['minlength'] && uname.touched"
+        >usernae atleast of characters</span
+      >
+    </div>
+    <label for="email" class="py-1">Email</label>
+    <input
+      type="text"
+      id="email"
+      name="email"
+      #email="ngModel"
+      required
+      [(ngModel)]="registerData.email"
+      placeholder="Enter your email"
+      class="border border-[#2e323e] rounded-md py-2 focus:border-indigo-400 outline-none px-2 bg-[#111926]"
+    />
+    <div class="text-red-500">
+      @if(email.errors?.['required'] && email.touched){
+      <span>email is required</span>
+      }
+    </div>
+    <label for="password" class="py-1">Password</label>
+    <input
+      type="text"
+      id="password"
+      name="password"
+      required
+      minlength="4"
+      #pass="ngModel"
+      [(ngModel)]="registerData.password"
+      placeholder="Enter password"
+      class="border border-[#2e323e] rounded-md py-2 focus:border-indigo-400 outline-none px-2 bg-[#111926]"
+    />
+    <div class="text-red-500">
+      @if(pass.touched && pass.errors?.['required']){
+      <span>password is required</span>
+      } @if(pass.touched && pass.errors?.['minlength']){
+      <span>should be atleast of 4 characters </span>
+      }
+    </div>
+    <label for="confirm-password" class="py-1">Confirm-password</label>
+    <input
+      type="text"
+      id="confirm-password"
+      name="confirm-password"
+      placeholder="confirm-password"
+      [(ngModel)]="registerData.confirmPassword"
+      #cpass="ngModel"
+      required
+      class="border border-[#2e323e] rounded-md py-2 focus:border-indigo-400 outline-none px-2 bg-[#111926]"
+    />
+    <div class="text-red-500">
+      <span *ngIf="pass.value != cpass.value"
+        >password should match</span
+      >
+    </div>
+    <input
+      type="submit"
+      name="signup"
+      value="Sign Up"
+      [disabled]="!form.valid"
+      class="py-2 bg-indigo-500 rounded-md text-amber-50 mt-5 shadow-lg active:bg-indigo-600"
+    />
+    <div class="text-end px-3 my-1">
+      already a user?
+      <a href="/login" class="text-blue-500"> login </a>
+    </div>
+  </form>
+</div>

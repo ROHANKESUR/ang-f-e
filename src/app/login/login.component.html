@@ -1,0 +1,46 @@
+
+<div class="container flex justify-center w-screen h-screen items-center bg-[#0e1420] ">
+  <form
+    (ngSubmit)="onSubmit()"
+    class="grid grid-rows-1 gap-y-5  border-[#2e323e] p-4 rounded-lg w-1/2 md:w-1/4 min-w-80  bg-[#161e2b]   text-[#fff] text-sm"
+  >
+    <h2 class="text-center font-semibold text-2xl">Login</h2>
+    <div class="grid grid-rows-1 gap-y-2">
+      <label for="username" class="px-2">Username:</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        [(ngModel)]="loginData.username"
+        placeholder="Enter your username"
+        class="border border-[#2e323e] py-2 px-4 rounded-md focus:border-indigo-400 outline-none bg-[#111926] "
+        required
+      />
+    </div>
+    <div class="grid grid-rows-1 gap-y-2">
+      <label for="password" class="px-2">Password:</label>
+      <input
+        type="text"
+        id="password"
+        name="password"
+        [(ngModel)]="loginData.password"
+        placeholder="Enter your password"
+        class="border border-[#2e323e] py-2 px-4 rounded-md focus:border-indigo-400 outline-none bg-[#111926]"
+        required
+      />
+    </div>
+    <input
+      type="submit"
+      value="Login"
+      class=" py-2 rounded-md bg-[#6a65fe]
+      shadow-lg text-amber-50 mt-3 hover:bg-[#6a70fe]"
+    />
+    <div 
+    class="text-end cursor-pointer px-3">
+      don't have an account?
+      <a href="/register" 
+      class="text-blue-500">
+      signup</a>
+    </div>
+  </form>
+</div>

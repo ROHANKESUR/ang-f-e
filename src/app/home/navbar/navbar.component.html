@@ -1,0 +1,47 @@
+@if(isEnabled){
+<app-create-post (closeEditor)="onClose()"></app-create-post>
+} @if(sideBarEnabled){
+<app-sidebar
+  (closeSideBar)="(sideBarEnabled)"
+  [isSideOpen]="sideBarEnabled"
+  (onOpen)="onCloseSide()"
+></app-sidebar>
+}@if(profileEnable){
+<app-user></app-user>
+}
+
+<div
+  class="fixed top-0 shadow-lg shadow-[#9693f913] w-screen min-w-80 rounded-br-xl bg-[#111926] bg-opacity-90 text-slate-300"
+>
+  <nav
+    class="container flex justify-between items-center max-h-24 min-h-14 mx-auto px-5"
+  >
+    <div class="flex justify-between gap-5 px-3 items-center">
+      <fa-icon
+        (click)="onsideToggle()"
+        [icon]="burger"
+        size="lg"
+        class="text-slate-300"
+      />
+      <button
+        class="mx-2 px-2 py-2 my-1 bg-[#9693f9] rounded-xl text-[#f1eae3] text-xs text font-semibold active:bg-indigo-600"
+        (click)="onOpenClick()"
+      >
+        <fa-icon [icon]="plus" class="text-[10px]" size="xl" />
+        <span class="ps-1">New Post</span>
+      </button>
+    </div>
+    <ul
+      class="md-flex gap-5 py-3 px-5 md:inline-flex hidden font-[400] text-sm"
+    >
+      <li><a [routerLink]="['/home']">Home</a></li>
+      <li>component</li>
+      <li>About Us</li>
+      <li>
+        <span class="cursor-pointer" (click)="toggleProfile()"
+          ><fa-icon [icon]="userIcon" size="xl"></fa-icon
+        ></span>
+      </li>
+    </ul>
+  </nav>
+</div>

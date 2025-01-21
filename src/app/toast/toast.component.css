@@ -1,0 +1,73 @@
+@keyframes fadeLine {
+  0% {
+    transform: translateX(100%);
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+  75% {
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: translateX(0%);
+    opacity: 0;
+  }
+}
+
+.line {
+  animation: fadeLine 3s ease-in-out forwards;
+}
+
+@keyframes openToast {
+  0% {
+    transform: translateY(120%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+.toast {
+  animation: openToast 1s ease-out forwards;
+}
+
+.toast-success {
+  @apply bg-green-400 bg-opacity-30;
+  .line {
+    @apply bg-green-500;
+  }
+  .message {
+    @apply text-green-300;
+  }
+  .x-button {
+    @apply text-green-300;
+  }
+}
+.toast-danger {
+  @apply bg-red-400 bg-opacity-30;
+  .line {
+    @apply bg-red-500;
+  }
+  .message {
+    @apply text-red-300;
+  }
+  .x-button {
+    @apply text-red-300;
+  }
+}
+.toast-warning {
+  @apply bg-yellow-400 bg-opacity-30;
+  .line {
+    @apply bg-yellow-500;
+  }
+  .message {
+    @apply text-yellow-300;
+  }
+  .x-button {
+    @apply text-yellow-300;
+  }
+}

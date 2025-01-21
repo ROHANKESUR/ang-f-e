@@ -1,0 +1,40 @@
+<div
+  class="h-screen w-screen flex justify-center items-start px-5 selection:bg-red-500"
+  (click)="resetMenu()"
+>
+  <div
+    class="grid lg:grid-cols-4 gap-3 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 mt-20 flex-wrap"
+    (click)="$event.stopPropagation()"
+  >
+    @for (post of posts; track $index) {
+    <div
+      class="bg-[#111926] text-white min-w-72 p-5 h-auto rounded-xl relative hover:bg-opacity-95"
+    >
+      @if(enableMenu(post.id)){
+      <app-crud-post [post]="posts" [selectId]="post.id" />
+      }
+      <section class="flex justify-between">
+        <div class="flex gap-2 items-center">
+          <div class="font-bold text-[#d6d6d6] font-sen text-sm capitalize">
+            {{ post.author }}
+          </div>
+          <div class="right-2 text-[9px] mt-[6px] text-white text-opacity-60">
+            {{ post.date }}
+          </div>
+        </div>
+        <fa-icon [icon]="menu" (click)="slectedIdMenu(post.id)"></fa-icon>
+      </section>
+      <section>
+        <div
+          class="font-bold font-sans text-lg capitalize p1 mt-3 text-[#c3c1fa]"
+        >
+          {{ post.title }}
+        </div>
+        <div class="text-xs text-[#b4bdcb] font-[200] font-poppins">
+          {{ post.content }}
+        </div>
+      </section>
+    </div>
+    }
+  </div>
+</div>

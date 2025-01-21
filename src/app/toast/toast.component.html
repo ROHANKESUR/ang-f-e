@@ -1,0 +1,21 @@
+<div class="flex justify-center" [ngClass]="{ hidden: !isToastVisible }">
+  <div
+    class="toast fixed bottom-5 z-50 h-12 min-w-[20rem] w-1/3 mt-5 overflow-hidden rounded"
+    [ngClass]="{
+      'toast-success': status === 'success',
+      'toast-danger': status === 'failed',
+      'toast-warning': status === 'warning'
+    }"
+  >
+    <span
+      class="absolute end-0 rounded-full pe-2 pt-1 x-button"
+      (click)="onClose()"
+      ><fa-icon [icon]="cancelMark" class="active:text-xs" size="lg"
+    /></span>
+    <p class="message text-center py-3 lg:text-xl font-sen">{{ message }}</p>
+
+    <span
+      class="line bottom-0 absolute h-1 w-full animate-lineFade bg-white"
+    ></span>
+  </div>
+</div>
